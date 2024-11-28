@@ -1,4 +1,3 @@
-
 //popup
 var container = document.getElementById('popup');
 var content = document.getElementById('popup-content');
@@ -26,7 +25,7 @@ var map = new ol.Map({
     layers: layersList,
     overlays: [overlayPopup],
     view: new ol.View({
-        maxZoom: 20, minZoom: 5
+        maxZoom: 20, minZoom: 8.5
     })
 });
 
@@ -78,19 +77,23 @@ map.getView().fit([451754,5593701, 799937,5913499], map.getSize());
     });
     map.addControl(bottomRightContainer)
 
+//popup
+var container = document.getElementById('popup');
+var content = document.getElementById('popup-content');
+var closer = document.getElementById('popup-closer');
+var sketch;
 
-
-  
-  /**
-   * Add a click handler to hide the popup.
-   * @return {boolean} Don't follow the href.
-   */
-  closer.onclick = function () {
-    overlay.setPosition(undefined);
+closer.onclick = function() {
+    container.style.display = 'none';
     closer.blur();
     return false;
-  };
-  
+};
+var overlayPopup = new ol.Overlay({
+    element: container
+});
+map.addOverlay(overlayPopup)
+    
+    
 var NO_POPUP = 0
 var ALL_FIELDS = 1
 
