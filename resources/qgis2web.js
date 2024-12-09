@@ -1,36 +1,16 @@
-//popup
-var container = document.getElementById('popup');
-var content = document.getElementById('popup-content');
-var closer = document.getElementById('popup-closer');
-
-var sketch;
-
-closer.onclick = function() {
-    container.style.display = 'none';
-    closer.blur();
-    return false;
-};
-var overlayPopup = new ol.Overlay({
-    element: container,
-    autoPan: {
-      animation: {
-        duration: 250,
-      },
-    },
-});
 
 var map = new ol.Map({
     target: 'map',
     renderer: 'canvas',
     layers: layersList,
-    overlays: [overlayPopup],
     view: new ol.View({
-        maxZoom: 20, minZoom: 8.5
+         maxZoom: 28, minZoom: 11
     })
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([451754,5593701, 799937,5913499], map.getSize());
+map.getView().fit([689292.772316, 5700165.643580, 779891.459152, 5732817.484827], map.getSize());
+
 ////small screen definition
     var hasTouchScreen = map.getViewport().classList.contains('ol-touch');
     var isSmallScreen = window.innerWidth < 650;
@@ -265,7 +245,7 @@ function onPointerMove(evt) {
                     highlightStyle = new ol.style.Style({
                         image: new ol.style.Circle({
                             fill: new ol.style.Fill({
-                                color: "#ff79c6"
+                                color: "#ffff00"
                             }),
                             radius: radius
                         })
@@ -276,7 +256,7 @@ function onPointerMove(evt) {
 
                     highlightStyle = new ol.style.Style({
                         stroke: new ol.style.Stroke({
-                            color: '#ff79c6',
+                            color: '#ffff00',
                             lineDash: null,
                             width: featureWidth
                         })
@@ -285,7 +265,7 @@ function onPointerMove(evt) {
                 } else {
                     highlightStyle = new ol.style.Style({
                         fill: new ol.style.Fill({
-                            color: '#ff79c6'
+                            color: '#ffff00'
                         })
                     })
                 }
@@ -476,23 +456,6 @@ var bottomRightContainerDiv = document.getElementById('bottom-right-container')
 
 
 //layerswitcher
-
-var layerSwitcher = new ol.control.LayerSwitcher({
-    activationMode: 'click',
-	startActive: true,
-	tipLabel: "Layers",
-    target: 'top-right-container',
-	collapseLabel: '»',
-	collapseTipLabel: 'Close'
-    });
-map.addControl(layerSwitcher);
-if (hasTouchScreen || isSmallScreen) {
-	document.addEventListener('DOMContentLoaded', function() {
-		setTimeout(function() {
-			layerSwitcher.hidePanel();
-		}, 500);
-	});	
-}
 
 
 
