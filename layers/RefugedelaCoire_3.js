@@ -1,0 +1,1 @@
+var json_RefugedelaCoire_3 = {"type":"FeatureCollection","name":"RefugedelaCoire_3","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[6.608474434052837,45.618297273521804]}}]}
