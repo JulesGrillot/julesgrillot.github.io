@@ -8,7 +8,7 @@ var wms_layers = [];
             
             source: new ol.source.XYZ({
             attributions: ' ',
-                url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+                url: 'https://tile.opentopomap.org/{z}/{x}/{y}.png'
             })
         });
 var format_Toposskirandocamptocamp_1 = new ol.format.GeoJSON();
